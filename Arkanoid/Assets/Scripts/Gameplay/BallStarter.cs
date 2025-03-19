@@ -16,7 +16,7 @@ namespace Gameplay
         private void OnAxisChangedHandler(float x)
         {
             _ball.Direction = BallHelper.GetStartDirection();
-            _inputService.OnHorizontalAxisChanged -= OnAxisChangedHandler;
+            gameObject.SetActive(false);
         }
     }
 }
