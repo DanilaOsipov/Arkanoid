@@ -9,14 +9,14 @@ namespace Gameplay
         [SerializeField] private InputService _inputService;
         [SerializeField] private Ball _ball;
 
-        private void OnEnable() => _inputService.OnAxisChanged += OnAxisChangedHandler;
+        private void OnEnable() => _inputService.OnHorizontalAxisChanged += OnAxisChangedHandler;
 
-        private void OnDisable() => _inputService.OnAxisChanged -= OnAxisChangedHandler;
+        private void OnDisable() => _inputService.OnHorizontalAxisChanged -= OnAxisChangedHandler;
 
-        private void OnAxisChangedHandler(Vector2 axis)
+        private void OnAxisChangedHandler(float x)
         {
             _ball.Direction = BallHelper.GetStartDirection();
-            _inputService.OnAxisChanged -= OnAxisChangedHandler;
+            _inputService.OnHorizontalAxisChanged -= OnAxisChangedHandler;
         }
     }
 }

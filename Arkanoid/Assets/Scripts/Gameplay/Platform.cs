@@ -8,10 +8,10 @@ namespace Gameplay
         [SerializeField] private InputService _inputService;
         [SerializeField] private Movable _movable;
 
-        private void OnEnable() => _inputService.OnAxisChanged += OnAxisChangedHandler;
+        private void OnEnable() => _inputService.OnHorizontalAxisChanged += OnAxisChangedHandler;
 
-        private void OnDisable() => _inputService.OnAxisChanged -= OnAxisChangedHandler;
+        private void OnDisable() => _inputService.OnHorizontalAxisChanged -= OnAxisChangedHandler;
 
-        private void OnAxisChangedHandler(Vector2 axis) => _movable.Move(axis);
+        private void OnAxisChangedHandler(float x) => _movable.Move(new(x, 0));
     }
 }

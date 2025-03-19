@@ -5,7 +5,8 @@ namespace Services
 {
     public class InputService : MonoBehaviour
     {
-        public event Action<Vector2> OnAxisChanged = delegate { };
+        public event Action<float> OnHorizontalAxisChanged = delegate { };
+        public event Action<float> OnVerticalAxisChanged = delegate { };
 
         private void Update() => HandleInput();
 
@@ -15,7 +16,8 @@ namespace Services
             if (axis == Vector2.zero)
                 return;
 
-            OnAxisChanged(axis);
+            if (axis.x != 0) OnHorizontalAxisChanged(axis.x);
+            if (axis.y != 0) OnVerticalAxisChanged(axis.y);
         }
     }
 }
