@@ -1,9 +1,16 @@
-﻿using UnityEngine;
+﻿using Restartables;
+using UnityEngine;
 
 namespace Services
 {
-    public class TimeService : MonoBehaviour
+    public class TimeService : MonoBehaviour, IRestartable
     {
-        public float DeltaTime => Time.deltaTime;
+        public float TimeScale { get; set; }
+
+        public float DeltaTime => Time.deltaTime * TimeScale;
+
+        private void Awake() => TimeScale = Time.timeScale;
+
+        void IRestartable.Restart() => TimeScale = Time.timeScale;
     }
 }
